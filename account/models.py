@@ -1,6 +1,6 @@
 from django.db import models
 
-'''
+
 from django.contrib.auth.models import AbstractBaseUser
 from account.manegers import PersonManager
 
@@ -14,8 +14,7 @@ class Person(AbstractBaseUser):  #1
     is_active = models.BooleanField(default=True)  # 必要です！
 
     USERNAME_FIELD = 'identifier'  # 4
-=======
-'''
+
 
 # Create your models here.
 
