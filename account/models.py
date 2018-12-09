@@ -18,24 +18,24 @@ class Person(AbstractBaseUser):  #1
 
 # Create your models here.
 
-
+'''
 class User(models.Model):
     name = models.CharField(max_length=128)
     password = models.CharField(max_length=12)
-
+'''
 class HouseAccount(models.Model):
     name = models.CharField(max_length=12)
-    administrator = models.ForeignKey('User', on_delete=models.SET_NULL, null=True)
+    administrator = models.ForeignKey('Person', on_delete=models.SET_NULL, null=True)
 
 class AccessManager(models.Model):
     ALLOW = 1
     DENY = 0
-    user = models.ForeignKey('User', on_delete=models.SET_NULL, null=True)
+    user = models.ForeignKey('Person', on_delete=models.SET_NULL, null=True)
     house = models.ForeignKey('HouseAccount', on_delete=models.SET_NULL, null=True)
     permission = models.IntegerField(editable=False)
 
 class Buy(models.Model):
-    user = models.ForeignKey('User', on_delete=models.SET_NULL, null=True)
+    user = models.ForeignKey('Person', on_delete=models.SET_NULL, null=True)
     house = models.ForeignKey('HouseAccount', on_delete=models.SET_NULL, null=True)
     things = models.CharField(max_length=128)
     cost = models.IntegerField()
